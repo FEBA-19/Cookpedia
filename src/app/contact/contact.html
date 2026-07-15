@@ -1,1 +1,100 @@
-<p>contact works!</p>
+<app-header></app-header>
+<div class="container bg-success p-5">
+    <section class="d-flex flex-column justify-content-center align-items-center text-light">
+      <h3>Contact Us</h3>
+      <p class="my-5 text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, quam corporis. Deserunt, dignissimos. Dolorem illum vero, deleniti provident, tenetur accusamus ipsum corrupti ducimus incidunt ab eius nostrum perspiciatis officiis eaque.</p>
+    </section>
+</div>
+<div class="container pt-5">
+    <section class="row my-5">
+      <!-- column 1 -->
+      <div class="col-lg-1"></div>
+      <!-- column 2 -->
+      <div class="col-lg-5">
+        <h3>Get In Touch</h3>
+        <p>Cookpedia, we believe food is more than just sustenance — it's culture, creativity, and joy shared around the table. Whether you're a beginner cook or a seasoned chef, we're here to help you discover, learn, and enjoy every moment you spend in the kitchen.</p>
+        <!-- icon 1 -->
+        <div class="d-flex gap-3">
+            <span style="width: 40px; height: 40px;" class="bg-success rounded-circle d-flex justify-content-center align-items-center">
+              <i class="fa-solid fa-crosshairs text-light text-center"></i>
+            </span>
+            <ul class="list-unstyled">
+              <li class="text-dark"><span class="fw-bolder">Address</span> <br> NYC 4567, PO Berlin.</li>
+            </ul>
+        </div>
+        <!-- icon 2 -->
+        <div class="d-flex gap-3 my-3">
+            <span style="width: 40px; height: 40px;" class="bg-success rounded-circle d-flex justify-content-center align-items-center">
+              <i class="fa-solid fa-phone text-light text-center"></i>
+            </span>
+            <ul class="list-unstyled">
+              <li class="text-dark"><span class="fw-bolder">Phone Number</span> <br> 9086754321 </li>
+            </ul>
+        </div>
+        <!-- icon 3 -->
+        <div class="d-flex gap-3">
+            <span style="width: 40px; height: 40px;" class="bg-success rounded-circle d-flex justify-content-center align-items-center">
+              <i class="fa-solid fa-envelope text-light text-center"></i>
+            </span>
+            <ul class="list-unstyled">
+              <li class="text-dark"><span class="fw-bolder">E Mail</span> <br> mail </li>
+            </ul>
+        </div>
+        <hr>
+        <div class="mb-5">
+          <h5>Follow Us</h5>
+          <div class="my-3 d-flex gap-3">
+            <!-- facebook -->
+            <span style="width: 40px; height: 40px;" class="bg-success rounded-circle d-flex justify-content-center align-items-center">
+              <i class="fa-brands fa-facebook-f text-light text-center"></i>
+            </span>
+            <!-- instagram -->
+             <span style="width: 40px; height: 40px;" class="bg-success rounded-circle d-flex justify-content-center align-items-center">
+              <i class="fa-brands fa-instagram text-light text-center"></i>
+            </span>
+            <!-- twitter -->
+             <span style="width: 40px; height: 40px;" class="bg-success rounded-circle d-flex justify-content-center align-items-center">
+              <i class="fa-brands fa-twitter text-light text-center"></i>
+            </span>
+            <!-- youtube -->
+             <span style="width: 40px; height: 40px;" class="bg-success rounded-circle d-flex justify-content-center align-items-center">
+              <i class="fa-brands fa-youtube text-light text-center"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+      <!-- column 3 -->
+      <div class="col-lg-1"></div>
+      <!-- column 4 -->
+      <div class="col-lg-5">
+        <form #feedbackForm = "ngForm" (ngSubmit)="submitFeedback(feedbackForm)" class="shadow rounded w-75 p-5 ">
+          <h3 class="my-3">Client Testimony</h3>
+          <div>
+            <input #username = "ngModel" name="name" [(ngModel)]= "name" class="px-2 form-control" type="text" placeholder="Name" required pattern="[a-zA-Z ]*">
+          </div>
+          @if (username.invalid && username.touched){
+            <div class="mb-3 text-danger">Invalid Name</div>
+          }
+          <div>
+            <input #useremail = "ngModel" name="email" [(ngModel)]= "email" class="px-2 form-control my-3" type="email" placeholder="Email" required email>
+          </div>
+          @if (useremail.invalid && useremail.touched){
+            <div class="mb-3 text-danger">Invalid Email</div>
+          }
+          <div>
+            <textarea #usermessage = "ngModel" name="message" [(ngModel)]= "message" class="px-2 form-control mb-3" placeholder="Message" required></textarea>
+          </div>
+          @if (usermessage.invalid && usermessage.touched){
+            <div class="mb-3 text-danger">Invalid Message</div>
+          }
+          <p class="text-secondary">By submitting you are agreeing to the terms and conditions of our website. We may use your details in our site.</p>
+          <div class="d-flex justify-content-end"><button type="submit" [disabled]="feedbackForm.invalid" class="btn btn-success">Submit</button></div>
+        </form>
+      </div>
+    </section>
+    <!-- map -->
+    <section class="my-5">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.975217565077!2d76.34006767479387!3d10.01890359008749!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b080ffce877d5ef%3A0x8bef6870ad11b98!2sLuminar%20Technolab%20-%20Kochi!5e0!3m2!1sen!2sin!4v1783874655585!5m2!1sen!2sin" width="100%" height="370" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </section>
+</div>
+<app-footer></app-footer>

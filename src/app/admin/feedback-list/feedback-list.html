@@ -1,1 +1,44 @@
-<p>feedback-list works!</p>
+<div>
+    <div class="row gx-0">
+        <div class="col-lg-2">
+            <app-admin-sidebar></app-admin-sidebar>
+        </div>
+        <div class="container-fluid col my-5">
+            <h1>Feedback List</h1>
+            <table class="table my-5 table-stripped table-hover">
+                <thead>
+                    <tr class="table-success">
+                        <th>#</th>
+                        <th>User Name</th>
+                        <th>Email</th>
+                        <th>Message</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (feedback of allFeedbacks(); track $index; let i=$index) {
+                        <tr>
+                            <td>{{i+1}}</td>
+                            <td>{{feedback.name}}</td>
+                            <td>{{feedback.email}}</td>
+                            <td>{{feedback.message}}</td>
+                            <td>
+                                @if(feedback.status == "pending"){
+                                    <div class="d-flex">
+                                        <button (click)="updateFeedback(feedback._id,'approved')" class="btn btn-success"><i class="fa-solid fa-check"></i></button>
+                                        <button (click)="updateFeedback(feedback._id,'rejected')" class="btn btn-danger ms-2"><i class="fa-solid fa-x"></i></button>
+                                    </div>
+                                }@else if(feedback.status == "approved"){
+                                    <button class="btn btn-success">APPROVED</button>
+                                }@else {
+                                    <button class="btn btn-danger">REJECTED</button>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

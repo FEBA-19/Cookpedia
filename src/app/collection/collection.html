@@ -1,1 +1,23 @@
-<p>collection works!</p>
+<app-header></app-header>
+<div class="bg-success text-light container py-5 d-flex justify-content-center align-items-center mb-5">
+   <h2 class="fw-bolder">Your Recipe Collection!!</h2>
+</div>
+<div class="container my-5">
+    <!-- Recipes -->
+     <div class="row">
+        @if (recipeCollection().length>0) {
+           @for (recipe of recipeCollection(); track $index){
+            <div class="col-lg-3 my-3">
+                <img class="img-fluid" [src]="recipe.image" alt="Recipe Image">
+                <div class="d-flex align-items-center gap-5">
+                    <h5 class="fw-bolder">{{recipe.name}}</h5>
+                    <button (click)="deleteRecipeFromUserCollection(recipe._id)" class="btn"><i class="fa-solid fa-trash text-danger"></i></button>
+                </div>
+            </div>
+           }
+        }@else {
+            <p class="fw-bolder text-danger my-5">Your Recipe Collection is Empty!!</p>
+        }
+     </div>
+</div>
+<app-footer></app-footer>

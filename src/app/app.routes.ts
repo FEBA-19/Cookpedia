@@ -51,6 +51,7 @@ export const routes: Routes = [
     {
         path:'recipes/:id', component:View, title:"View Recipe"
     },
+    
      // http://localhost:4200/ - PNF
     {
         path:'**', component:Pnf, title:"Page Not Found"

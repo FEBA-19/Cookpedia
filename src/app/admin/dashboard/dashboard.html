@@ -1,1 +1,79 @@
-<p>dashboard works!</p>
+<div>
+   <div class="row gx-0">
+      <div class="col-lg-2">
+        <app-admin-sidebar></app-admin-sidebar>
+      </div>
+      <div class="col">
+        <!-- banner - header -->
+        <div class="row">
+           <div class="d-flex bg-success justify-content-between align-items-center text-light p-3">
+            <h3><button class="btn"><i class="fa-solid fa-bars text-light fs-3"></i></button>ADMIN</h3>
+               <!-- dropdown  -->
+                <div class="dropdown">
+                    <button class="btn text-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-user"></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><button class="dropdown-item"><i class="fa-solid fa-power-off"></i>LogOut</button></li>
+                    </ul>
+                </div>
+           </div>
+        </div>
+        <!-- cards -->
+         <div class="container-fluid row my-5">
+            <!-- user card -->
+             <div class="col-lg-3">
+                <div style="background-color: rgb(223, 223, 69);" class="d-flex p-2 rounded text-light align-items-center justify-content-center">
+                   <i class="fa-solid fa-users fs-1"></i>
+                   <div class="ms-5">
+                      <h4>Users</h4>
+                      <h5>10</h5>
+                   </div>
+                </div>
+             </div>
+             <!-- recipe card -->
+             <div class="col-lg-3">
+                <div style="background-color: rgb(122, 217, 70);" class="d-flex p-2 rounded text-light align-items-center justify-content-center">
+                   <i class="fa-solid fa-bowl-rice fs-1"></i>
+                   <div class="ms-5">
+                      <h4>Recipes</h4>
+                      <h5>10</h5>
+                   </div>
+                </div>
+             </div>
+             <!-- Downloads card -->
+             <div class="col-lg-3">
+                <div style="background-color: rgb(70, 193, 217);" class="d-flex p-2 rounded text-light align-items-center justify-content-center">
+                   <i class="fa-solid fa-download fs-1"></i>
+                   <div class="ms-5">
+                      <h4>Downloads</h4>
+                      <h5>10</h5>
+                   </div>
+                </div>
+             </div>
+             <!-- feedbacks card -->
+             <div class="col-lg-3">
+                <div style="background-color: rgb(217, 70, 183);" class="d-flex p-2 rounded text-light align-items-center justify-content-center">
+                   <i class="fa-solid fa-comment fs-1"></i>
+                   <div class="ms-5">
+                      <h4>Feedbacks</h4>
+                      <h5>10</h5>
+                   </div>
+                </div>
+             </div>
+         </div>
+         <!-- chart and calender -->
+          <div class="container-fluid row mb-5">
+            <div class="col-lg-8">
+                <!-- chart -->
+            </div>
+            <div class="col-lg-4">
+                <!-- calender -->
+                 <mat-card class="demo-inline-calendar-card">
+                    <mat-calendar [(selected)]="selected"></mat-calendar>
+                 </mat-card>
+            </div>
+          </div>
+      </div>
+   </div>
+</div>

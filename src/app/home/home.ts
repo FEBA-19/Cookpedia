@@ -15,4 +15,5 @@ import { AsyncPipe, SlicePipe } from '@angular/common';
 export class Home {
   api = inject(Api)
   allRecipes$ = this.api.getAllRecipesAPI()
+  allApprovedFeedbacks$ = this.api.getAllApprovedFeedbacksAPI()
 }

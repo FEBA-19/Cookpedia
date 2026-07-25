@@ -1,1 +1,87 @@
-<p>view works!</p>
+<app-header></app-header>
+<div class="my-5 container">
+    <!-- <p>{{recipe$ |async}}</p> -->
+    <div class="row">
+        <!-- col 1 -->
+        <div class="col-lg-6 d-flex flex-column">
+            <a routerLink="/recipes">Back To Recipe List</a>
+            <img class="my-5 w-100 img-fluid" [src]="(recipe$ |async)?.image" alt="Recipe Image">
+            <div class="d-flex align-items-center justify-content-between">
+                <button (click)="downloadRecipe()" class="btn btn-success">Download Recipe</button>
+                <button (click)="saveRecipe()" class="btn btn-primary">Save Recipe</button>
+            </div>
+        </div>
+        <!-- col 2 -->
+        <div class="col-lg-6">
+           <h1>{{(recipe$ |async)?.name}}</h1>
+           <div class="my-5">
+                <div class="d-flex justify-content-between">
+                <h5>Cuisine: {{(recipe$ |async)?.cuisine}}</h5>
+                <h5>Servings: {{(recipe$ |async)?.servings}}</h5>
+                <h5>Mode of Cooking: {{(recipe$ |async)?.difficulty}}</h5>
+                </div>
+                <!-- row 2 -->
+                <div class="row my-3">
+                    <!-- col 1 -->
+                    <div class="col-lg-4 d-flex flex-column align-items-center">
+                    <div class="text-center">
+                        <img style="width: 150px; height: 150px;" src="/clock.png" alt="Clock Image">
+                        <h6>Preparation Time</h6>
+                        <h6><span class="text-danger">{{(recipe$ |async)?.prepTimeMinutes}}</span> Minutes</h6>
+                    </div>
+                    </div>
+                    <!-- col 2 -->
+                    <div class="col-lg-4 mt-4 d-flex flex-column align-items-center">
+                    <div class="text-center">
+                        <h6>Cooking Time</h6>
+                        <h6><span class="text-danger">{{(recipe$ |async)?.cookTimeMinutes}}</span> Minutes</h6>
+                    </div>
+                    </div>
+                    <!-- col 3 -->
+                    <div class="col-lg-4 d-flex flex-column align-items-center">
+                    <div class="text-center">
+                        <img style="width: 150px; height: 145px;" src="/kcal.png" alt="kcal">
+                        <h6>Calories Per Servings</h6>
+                        <h6 class="text-danger">{{(recipe$ |async)?.caloriesPerServing}}</h6>
+                    </div>
+                    </div>
+                </div>
+                <!-- bottom section -->
+                <div>
+                    <h3>Ingredients Needed</h3>
+                    <ol>
+                        @for (item of (recipe$|async)?.ingredients; track $index){
+                            <li>{{item}}</li>
+                        }
+                    </ol>
+                </div>
+
+                <div>
+                    <h3>Cooking Instructions</h3>
+                    <ol>
+                        @for (item of (recipe$|async)?.instructions; track $index){
+                            <li>{{item}}</li>
+                        }
+                    </ol>
+                </div>
+           </div>
+        </div>
+    </div>
+    <h3>Related recipes</h3>
+    <div class="row">
+        @for (recipe of allRelatedRecipe(); track $index){
+            <div class="col-lg-2">
+            <div (click)="viewRecipeFromRelatedRecipes(recipe._id,recipe.cuisine)" class="mb-5">
+                <div class="my-4">
+                    <img style="width: 170px; height: 170px;" [src]="recipe.image">
+                    <h5 style="width: 170px;">{{recipe.name}}</h5>
+                </div>
+            </div>
+            </div>
+        }
+        @if(allRelatedRecipe().length == 0){
+            <p class="my-2">No Related Recipes Found!!</p>
+        }
+    </div>
+</div>
+<app-footer></app-footer>

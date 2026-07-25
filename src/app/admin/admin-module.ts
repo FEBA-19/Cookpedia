@@ -10,6 +10,11 @@ import { FeedbackList } from './feedback-list/feedback-list';
 import { ManageRecipe } from './manage-recipe/manage-recipe';
 import { AdminSidebar } from './admin-sidebar/admin-sidebar';
 import { AdminHeader } from './admin-header/admin-header';
+import { SearchPipe } from '../pipes/search-pipe';
+import { FormsModule } from '@angular/forms';
+import {MatCardModule} from '@angular/material/card';
+import {provideNativeDateAdapter} from '@angular/material/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
@@ -22,6 +27,7 @@ import { AdminHeader } from './admin-header/admin-header';
     AdminSidebar,
     AdminHeader,
   ],
-  imports: [CommonModule, AdminRoutingModule],
+  imports: [CommonModule, AdminRoutingModule,SearchPipe,FormsModule,MatCardModule, MatDatepickerModule],
+  providers: [provideNativeDateAdapter()]
 })
 export class AdminModule {}

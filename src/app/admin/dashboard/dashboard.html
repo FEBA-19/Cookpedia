@@ -1,20 +1,22 @@
 <div>
    <div class="row gx-0">
-      <div class="col-lg-2">
-        <app-admin-sidebar></app-admin-sidebar>
-      </div>
+      @if (sideBarOpen) {
+         <div class="col-lg-2">
+            <app-admin-sidebar></app-admin-sidebar>
+         </div>
+      }
       <div class="col">
         <!-- banner - header -->
         <div class="row">
            <div class="d-flex bg-success justify-content-between align-items-center text-light p-3">
-            <h3><button class="btn"><i class="fa-solid fa-bars text-light fs-3"></i></button>ADMIN</h3>
+            <h3><button (click)="toggle()" class="btn"><i class="fa-solid fa-bars text-light fs-3"></i></button>ADMIN</h3>
                <!-- dropdown  -->
                 <div class="dropdown">
                     <button class="btn text-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fa-solid fa-user"></i>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><button class="dropdown-item"><i class="fa-solid fa-power-off"></i>LogOut</button></li>
+                        <li><button (click)="logOut()" class="dropdown-item"><i class="fa-solid fa-power-off"></i>LogOut</button></li>
                     </ul>
                 </div>
            </div>
@@ -27,7 +29,7 @@
                    <i class="fa-solid fa-users fs-1"></i>
                    <div class="ms-5">
                       <h4>Users</h4>
-                      <h5>10</h5>
+                      <h5>{{(userCount$ |async)?.length}}</h5>
                    </div>
                 </div>
              </div>
@@ -37,7 +39,7 @@
                    <i class="fa-solid fa-bowl-rice fs-1"></i>
                    <div class="ms-5">
                       <h4>Recipes</h4>
-                      <h5>10</h5>
+                      <h5>{{(recipeCount$ |async)?.length}}</h5>
                    </div>
                 </div>
              </div>
@@ -47,7 +49,7 @@
                    <i class="fa-solid fa-download fs-1"></i>
                    <div class="ms-5">
                       <h4>Downloads</h4>
-                      <h5>10</h5>
+                      <h5>{{(downloadCount$ |async).length}}</h5>
                    </div>
                 </div>
              </div>
@@ -57,7 +59,7 @@
                    <i class="fa-solid fa-comment fs-1"></i>
                    <div class="ms-5">
                       <h4>Feedbacks</h4>
-                      <h5>10</h5>
+                      <h5>{{(feedbackCount$ |async)?.length}}</h5>
                    </div>
                 </div>
              </div>
@@ -66,6 +68,7 @@
           <div class="container-fluid row mb-5">
             <div class="col-lg-8">
                 <!-- chart -->
+                 <canvas baseChart [data]="barChartData" [options]="barChartOptions" [type]="'bar'"> </canvas>
             </div>
             <div class="col-lg-4">
                 <!-- calender -->

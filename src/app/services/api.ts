@@ -71,7 +71,7 @@ export class Api {
   }
 
   // http://localhost:3000/feedbacks : get request by admin feedback component when page loads
-  getAllFeedbackListAPI(){
+  getAllFeedbackListAPI():Observable<any>{
     return this.http.get(`${this.server_url}/feedbacks`)
   }
 

@@ -9,11 +9,13 @@ import { Collection } from './collection/collection';
 import { View } from './view/view';
 import { Pnf } from './pnf/pnf';
 import { Contact } from './contact/contact';
+import { authGuard } from './guards/auth-guard';
+import { adminAuthGuard } from './guards/admin-auth-guard';
 
 export const routes: Routes = [
     // lazy loaded module path : http://localhost:4200/admin
     {
-       path:'admin' , loadChildren:()=> import('./admin/admin-module').then(module=>module.AdminModule)
+       path:'admin' , canActivate:[adminAuthGuard], loadChildren:()=> import('./admin/admin-module').then(module=>module.AdminModule)
     },
     // http://localhost:4200/ - Home
     {
@@ -41,15 +43,15 @@ export const routes: Routes = [
     },
      // http://localhost:4200/ - User Profile
     {
-        path:'profile', component:Profile, title:"User Profile"
+        path:'profile', canActivate:[authGuard], component:Profile, title:"User Profile"
     },
      // http://localhost:4200/ - User Collection
     {
-        path:'collection', component:Collection, title:"User Collection"
+        path:'collection', canActivate:[authGuard], component:Collection, title:"User Collection"
     },
      // http://localhost:4200/ - View Recipe
     {
-        path:'recipes/:id', component:View, title:"View Recipe"
+        path:'recipes/:id', canActivate:[authGuard], component:View, title:"View Recipe"
     },
     
      // http://localhost:4200/ - PNF

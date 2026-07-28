@@ -1,1 +1,11 @@
-<p>pnf works!</p>
+<div style="height: 100vh;" class="d-flex justify-content-center align-items-center flex-column">
+    <h1>404!</h1>
+    <img height="50%" src="https://www.bathim.be/assets/404Error-ZoNfqr33.gif" alt="Page Not Found">
+    <h2>Page you are looking for is not available!!</h2>
+    @if (role=="admin"){
+       <a class="btn btn-success my-3" routerLink="/admin">Go Back To Home</a>
+    }@else {
+       <a class="btn btn-success my-3" routerLink="/">Go Back To Home</a>
+    }
+    
+</div>
